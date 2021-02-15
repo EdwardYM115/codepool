@@ -58,6 +58,10 @@ while true; do
       rm -f ./workload.out
 	  
       fi
+      else
+      sh ./gui-yaml-dump.sh
+      rm -f ./ns.out
+      rm -f ./workload.out
       fi
 	  
 	  
@@ -85,6 +89,10 @@ while true; do
 	  rm -f ./workload.out
 	  
 	  fi
+	  else
+	  sh ./gui-yaml-dump-seperate.sh
+          rm -f ./ns.out
+	  rm -f ./workload.out
 	  fi
 	  
       ;;
