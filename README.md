@@ -73,4 +73,4 @@
 
 3）选择Replace Api Version可对所有文件apiVersion字段extensions/v1beta1替换为apps/v1
 
-4) 选择Process Noisy Info可对所有文件注释clusterIP、resourceVersion、selfLink、uid字段
+4）选择Process Noisy Info可对所有文件注释clusterIP、resourceVersion、selfLink、uid字段
