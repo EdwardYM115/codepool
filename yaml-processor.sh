@@ -40,14 +40,14 @@ while true; do
 	  echo "New Image: $nimg" >> ./k8s-yaml-dump/process-image.log
 	  echo "Files need to be processed:" >> ./k8s-yaml-dump/process-image.log
 	  grep -Rl "image: $oimg" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-image.log
-	  echo "\n" >> ./k8s-yaml-dump/process-image.log
+	  echo -e "\n" >> ./k8s-yaml-dump/process-image.log
       find ./k8s-yaml-dump/ -name \*.yaml|xargs -n 1 sed -i "s/image: $oimg/image: $nimg/g"
 	  oimgnuma=$(grep -Rl "image: $oimg" ./k8s-yaml-dump/*|wc -l)
 	  nimgnuma=$(grep -Rl "image: $nimg" ./k8s-yaml-dump/*|wc -l)
 	  procnum=`expr $nimgnuma - $nimgnumb`
 	  echo "Files Process Failed:" >> ./k8s-yaml-dump/process-image.log
 	  grep -Rl "image: $oimg" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-image.log
-	  echo "\n" >> ./k8s-yaml-dump/process-image.log
+	  echo -e "\n" >> ./k8s-yaml-dump/process-image.log
 	  echo "Files Process Succeed:" >> ./k8s-yaml-dump/process-image.log
 	  grep -Rl "image: $nimg" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-image.log
       dialog --title "Replace Image Complete!" --msgbox "Files:$oimgnumb Replace:$procnum Left:$oimgnuma" 0 0
@@ -62,14 +62,14 @@ while true; do
 	  echo "New Secret: $nscrt" >> ./k8s-yaml-dump/process-imagepullsecret.log
 	  echo "Files need to be processed:" >> ./k8s-yaml-dump/process-imagepullsecret.log
 	  grep -PRzl "imagePullSecrets:\n        - name: $oscrt" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-imagepullsecret.log
-	  echo "\n" >> ./k8s-yaml-dump/process-imagepullsecret.log
+	  echo -e "\n" >> ./k8s-yaml-dump/process-imagepullsecret.log
       find ./k8s-yaml-dump/ -name \*.yaml|xargs -n 1 sed -i ":a;N;\$!ba;s/imagePullSecrets:\n        - name: $oscrt/imagePullSecrets:\n        - name: $nscrt/g"
 	  oscrtnuma=$(grep -PRzl "imagePullSecrets:\n        - name: $oscrt" ./k8s-yaml-dump/*|wc -l)
 	  nscrtnuma=$(grep -PRzl "imagePullSecrets:\n        - name: $nscrt" ./k8s-yaml-dump/*|wc -l)
 	  procnum=`expr $nscrtnuma - $nscrtnumb`
 	  echo "Files Process Failed:" >> ./k8s-yaml-dump/process-imagepullsecret.log
 	  grep -PRzl "imagePullSecrets:\n        - name: $oscrt" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-imagepullsecret.log
-	  echo "\n" >> ./k8s-yaml-dump/process-imagepullsecret.log
+	  echo -e "\n" >> ./k8s-yaml-dump/process-imagepullsecret.log
 	  echo "Files Process Succeed:" >> ./k8s-yaml-dump/process-imagepullsecret.log
 	  grep -PRzl "imagePullSecrets:\n        - name: $nscrt" ./k8s-yaml-dump/* >> ./k8s-yaml-dump/process-imagepullsecret.log
       dialog --title "Replace Image Pull Secret Complete!" --msgbox "Files:$oscrtnumb Replace:$procnum Left:$oscrtnuma" 0 0
