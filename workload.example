@@ -1,0 +1,15 @@
+clusterrole
+clusterrolebinding
+configmap
+daemonset
+deployment
+ingress
+pv
+pvc
+role
+rolebinding
+secret
+service
+serviceaccount
+statefulset
+storageclass
